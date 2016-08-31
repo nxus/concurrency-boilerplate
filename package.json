@@ -10,7 +10,7 @@
     "web": "npm run prod",
     "worker": "worker=true npm run prod",
     "timer": "timer=true npm run prod",
-    "build": "babel modules -d lib --copy-files --ignore theme/assets && cp -rv modules/theme/assets lib/theme/assets",
+    "build": "babel modules -d lib --copy-files",
     "start": "node index.js",
     "dev": "timer=true worker=true npm start",
     "prod": "npm run build && node --max_old_space_size=450 index.js"
