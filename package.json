@@ -1,0 +1,83 @@
+{
+  "name": "nxus-concurrency-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "~4.2"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "timer=true worker=true npm start",
+    "prod": "npm run build && node --max_old_space_size=450 index.js",
+    "web": "npm run prod",
+    "worker": "worker=true npm run prod",
+    "timer": "timer=true npm run prod",
+    "test": "NODE_ENV=test mocha --recursive --compilers js:babel-core/register -R spec modules/**/test/* ",
+    "pretest": "forever stopall && NODE_ENV=test PORT=3002 forever -o test.log -e test.log start index.js && sleep 15",
+    "posttest": "forever stop index.js",
+    "build": "babel modules -d lib --copy-files --ignore theme/assets && cp -rv modules/theme/assets lib/theme/assets"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "article-extractor": "https://github.com/ThirtyThings/article-extractor.git#master",
+    "aylien_textapi": "^0.5.0",
+    "babel-cli": "^6.11.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-register": "^6.9.0",
+    "bluebird": "^3.1.1",
+    "dot-object": "^1.4.1",
+    "excerpt-html": "^1.0.1",
+    "fbgraph": "^1.3.0",
+    "feedparser": "^1.1.4",
+    "forever": "^0.15.1",
+    "google-images": "^1.0.0",
+    "idle-gc": "^1.0.1",
+    "limax": "^1.2.0",
+    "marked": "^0.3.5",
+    "moment": "^2.12.0",
+    "morph": "^0.2.0",
+    "nxus-admin-ui": "^3.0.1-0",
+    "nxus-base-ui": "^3.0.0",
+    "nxus-contact-form": "^3.0.0",
+    "nxus-core": "^3.0.0",
+    "nxus-data-loader": "^3.0.0",
+    "nxus-pipeliner": "^3.0.0",
+    "nxus-renderer": "^3.0.0",
+    "nxus-router": "^3.0.0",
+    "nxus-storage": "^3.0.0",
+    "nxus-templater": "^3.0.0",
+    "nxus-tester": "^3.0.0",
+    "nxus-users": "^3.0.0",
+    "nxus-worker-queue": "^3.0.5",
+    "pdf-text": "^0.4.0",
+    "rate-limit": "^0.1.1",
+    "request": "^2.70.0",
+    "sails-mongo": "^0.11.5",
+    "simple-twitter": "^1.0.7",
+    "striptags": "^2.1.1",
+    "to-markdown": "^2.0.1",
+    "twilio": "^2.9.2",
+    "twitter": "^1.4.0",
+    "underscore": "^1.8.3",
+    "unescape-html": "^1.0.0",
+    "x-ray": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.9.0",
+    "mocha": "^2.2.5",
+    "should": "^7.0.2",
+    "sinon": "^1.17.2",
+    "chai": "^3.5.0",
+    "documentation": "^4.0.0-beta",
+    "chai-as-promised": "^5.2.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-cli": "^6.9.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}
