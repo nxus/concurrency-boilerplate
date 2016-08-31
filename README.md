@@ -33,6 +33,8 @@ Then navigate to `http://localhost:5000/trigger`
 
 This worker runs based on a signal sent by the timer process at a set interval. The worker sends a 'completed' signal when done.
 
+The timer tracks the current number of running workers.
+
 ```
 > scheduled=true heroku local
 ```
