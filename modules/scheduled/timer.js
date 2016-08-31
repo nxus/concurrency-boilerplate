@@ -2,10 +2,12 @@
 * @Author: mike
 * @Date:   2016-08-31 09:50:55
 * @Last Modified 2016-08-31
-* @Last Modified time: 2016-08-31 09:56:16
+* @Last Modified time: 2016-08-31 11:16:16
 */
 
 'use strict';
+
+import _ from 'underscore'
 
 class Timer {
   constructor(app) {
@@ -13,8 +15,20 @@ class Timer {
 
     this._workerQueue = app.get('worker-queue')
 
-    if(this._app.config.timer)
-      setInterval(this._triggerJob.bind(this), 60000)
+    this._runningJobs = 0
+
+    if(this._app.config.timer) {
+      setInterval(() => {
+        this._runningJobs++
+        this._workerQueue.task("doSomething", {some: 'data'})
+      }, _.random(1000, 5000))
+
+      this._workerQueue.worker('completed', () => {
+        this._runningJobs--
+        this._app.log.info("Running workers:", this._runningJobs)
+      })
+    }
+
   }
 
   _triggerJob(data) {

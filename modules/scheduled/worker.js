@@ -2,10 +2,12 @@
 * @Author: mike
 * @Date:   2016-08-31 09:50:51
 * @Last Modified 2016-08-31
-* @Last Modified time: 2016-08-31 09:56:28
+* @Last Modified time: 2016-08-31 11:15:14
 */
 
 'use strict';
+
+import _ from 'underscore'
 
 class Worker {
   constructor(app) {
@@ -19,6 +21,13 @@ class Worker {
 
   _doSomething(data) {
     this._app.log.info('Worker working on something')
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this._app.log.info('Worker completed')
+        this._workerQueue.task('completed', {})
+        resolve()
+      }, _.random(1000, 5000))
+    })
   }
 }
 

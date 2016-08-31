@@ -2,7 +2,7 @@
 * @Author: mike
 * @Date:   2016-08-31 09:50:55
 * @Last Modified 2016-08-31
-* @Last Modified time: 2016-08-31 10:05:23
+* @Last Modified time: 2016-08-31 10:50:38
 */
 
 'use strict';
@@ -14,7 +14,7 @@ class Timer {
     this._workerQueue = app.get('worker-queue')
 
     if(this._app.config.timer)
-      setInterval(this._triggerJob.bind(this), 60000)
+      setInterval(this._triggerJob.bind(this), 2000)
   }
 
   _triggerJob(data) {

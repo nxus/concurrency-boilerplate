@@ -2,7 +2,7 @@
 * @Author: mike
 * @Date:   2016-08-31 09:51:00
 * @Last Modified 2016-08-31
-* @Last Modified time: 2016-08-31 09:56:32
+* @Last Modified time: 2016-08-31 12:04:45
 */
 
 'use strict';
@@ -19,6 +19,9 @@ class Worker {
 
   _doSomething(data) {
     this._app.log.info('Worker working on something')
+    return new Promise((resolve, reject) => {
+      setTimeout(resolve, 1000)
+    })
   }
 }
 
