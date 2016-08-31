@@ -24,7 +24,7 @@ This worker runs based on the user doing something on the web worker.
 
 
 ```
-> triggered=true npm run web
+> triggered=true heroku local
 ```
 
 Then navigate to `http://localhost:5000/trigger`
@@ -34,7 +34,7 @@ Then navigate to `http://localhost:5000/trigger`
 This worker runs based on a signal sent by the timer process at a set interval. The worker sends a 'completed' signal when done.
 
 ```
-> scheduled=true npm run web
+> scheduled=true heroku local
 ```
 
 ### nxus-worker-queue + nxus-pipeliner
@@ -42,5 +42,5 @@ This worker runs based on a signal sent by the timer process at a set interval. 
 Finally the `with-pipeliner` module has an example of setting up and triggering a worker-queue + pipeliner combination.
 
 ```
-> pipeliner=true npm run web
+> pipeliner=true heroku local
 ```
