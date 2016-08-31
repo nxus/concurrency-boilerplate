@@ -7,16 +7,13 @@
     "node": "~4.2"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "timer=true worker=true npm start",
-    "prod": "npm run build && node --max_old_space_size=450 index.js",
     "web": "npm run prod",
     "worker": "worker=true npm run prod",
     "timer": "timer=true npm run prod",
-    "test": "NODE_ENV=test mocha --recursive --compilers js:babel-core/register -R spec modules/**/test/* ",
-    "pretest": "forever stopall && NODE_ENV=test PORT=3002 forever -o test.log -e test.log start index.js && sleep 15",
-    "posttest": "forever stop index.js",
-    "build": "babel modules -d lib --copy-files --ignore theme/assets && cp -rv modules/theme/assets lib/theme/assets"
+    "build": "babel modules -d lib --copy-files --ignore theme/assets && cp -rv modules/theme/assets lib/theme/assets",
+    "start": "node index.js",
+    "dev": "timer=true worker=true npm start",
+    "prod": "npm run build && node --max_old_space_size=450 index.js"
   },
   "author": "",
   "license": "ISC",
